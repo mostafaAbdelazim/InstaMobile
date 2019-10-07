@@ -31,6 +31,9 @@ class CategoriesViewModel : ViewModel() {
                         category = categoryDocument.toObject(Category::class.java)!!
                         category.recipesCount = querySnapshot.documents.size
                         list.add(category)
+                        list.sortByDescending { category1 ->
+                            category1.recipesCount
+                        }
                         _categories.value = list
                     }
             }

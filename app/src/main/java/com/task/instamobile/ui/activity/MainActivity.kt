@@ -11,10 +11,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.task.instamobile.R
 import kotlinx.android.synthetic.main.activity_main.*
 
-const val CATEGORIES_DOCUMENT_REF = "dZsWGCUvF6DlyJvF3r9H"
 const val CATEGORIES_COLLECTION_REF = "Categories"
 const val RECIPES_COLLECTION_REF = "Recipes"
-const val RECIPES_DOCUMENT_REF = "CLKpnfhxIGndGAGAmCen"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -54,7 +52,5 @@ class MainActivity : AppCompatActivity() {
 
     fun showSnackBar(message: String) {
         Snackbar.make(this.findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show()
-
-
     }
 }
