@@ -29,6 +29,5 @@ class CategoriesAdapter(private val dataSet: List<Category>) :
             binding.category = category
             binding.executePendingBindings()
         }
-
     }
 }

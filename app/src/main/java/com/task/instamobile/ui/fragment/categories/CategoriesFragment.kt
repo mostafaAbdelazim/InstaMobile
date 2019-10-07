@@ -14,14 +14,13 @@ import com.task.instamobile.databinding.FragmentCategoriesBinding
 import com.task.instamobile.ui.activity.MainActivity
 
 class CategoriesFragment : Fragment() {
-    private lateinit var binding: FragmentCategoriesBinding
-    private lateinit var viewModel: CategoriesViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_categories, container, false)
-        viewModel = ViewModelProviders.of(this).get(CategoriesViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this).get(CategoriesViewModel::class.java)
+        val binding: FragmentCategoriesBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_categories, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         viewModel.errorMessage.observe(this, Observer {

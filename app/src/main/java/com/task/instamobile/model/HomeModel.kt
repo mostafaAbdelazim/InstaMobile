@@ -1,10 +1,10 @@
 package com.task.instamobile.model
 
-
-data class Categories(val CategoriesList: List<Category> = emptyList())
+import com.google.gson.annotations.Expose
 
 data class Category(
     val id: Int = -1,
     val name: String = "",
-    val photo_url: String = ""
+    val photo_url: String = "",
+    @Expose var recipesCount: Int = 0
 )
