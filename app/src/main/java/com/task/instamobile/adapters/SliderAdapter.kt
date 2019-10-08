@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.task.instamobile.databinding.ImageSlideBinding
 
-
 class SliderAdapter(private val photos: List<String>, private val context: Context) :
     PagerAdapter() {
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
@@ -15,7 +14,6 @@ class SliderAdapter(private val photos: List<String>, private val context: Conte
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-
 
         val binding =
             ImageSlideBinding.inflate(

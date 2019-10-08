@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.task.instamobile.R
 import com.task.instamobile.adapters.HomeAdapter
 import com.task.instamobile.adapters.RecipesListAdapter
 import com.task.instamobile.databinding.FragmentRecipesListBinding
@@ -27,10 +25,15 @@ class RecipesList : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_recipes_list, container, false)
-        binding.viewModel = recipesListViewModel
-        binding.lifecycleOwner = this
+        binding = FragmentRecipesListBinding.inflate(inflater, container, false).apply {
+            viewModel = recipesListViewModel
+            lifecycleOwner = this@RecipesList
+        }
+        setObservers()
+        return binding.root
+    }
+
+    private fun setObservers() {
         recipesListViewModel.recipesList.observe(this, Observer {
             val adapter = RecipesListAdapter(it, object : HomeAdapter.MyClickListener {
                 override fun myOnClick(recipe: Recipe) {
@@ -44,6 +47,5 @@ class RecipesList : Fragment() {
         recipesListViewModel.errorMessage.observe(this, Observer {
             (activity as MainActivity).showSnackBar(it)
         })
-        return binding.root
     }
 }

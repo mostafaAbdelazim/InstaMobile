@@ -25,7 +25,11 @@ class RecipesListViewModel(category: Category) : ViewModel() {
             .get()
             .addOnSuccessListener {
                 for (recipeDocument in it.documents) {
-                    list.add(recipeDocument.toObject(Recipe::class.java)!!)
+                    val recipe = recipeDocument.toObject(Recipe::class.java)
+                    recipe?.let { recipe1 ->
+                        recipe1.categoryName = category.name
+                        list.add(recipe)
+                    }
                 }
                 _recipesList.value = list
             }.addOnFailureListener {

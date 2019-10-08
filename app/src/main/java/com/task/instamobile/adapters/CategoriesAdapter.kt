@@ -12,7 +12,7 @@ class CategoriesAdapter(
 ) :
     RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesViewHolder {
-        val binding: CategoriesCellBinding =
+        val binding =
             CategoriesCellBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CategoriesViewHolder(binding)
     }
@@ -29,7 +29,7 @@ class CategoriesAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(category: Category, myClickListener: MyClickListener) {
-            binding.root.setOnClickListener { v -> myClickListener.myOnClick(category) }
+            binding.root.setOnClickListener { myClickListener.myOnClick(category) }
             binding.category = category
             binding.executePendingBindings()
         }

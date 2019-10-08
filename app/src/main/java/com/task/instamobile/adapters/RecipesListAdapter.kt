@@ -2,10 +2,8 @@ package com.task.instamobile.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.task.instamobile.R
-import com.task.instamobile.databinding.RecipeCellBindingImpl
+import com.task.instamobile.databinding.RecipeCellBinding
 import com.task.instamobile.model.Recipe
 
 class RecipesListAdapter(
@@ -14,9 +12,8 @@ class RecipesListAdapter(
 ) :
     RecyclerView.Adapter<RecipesListAdapter.RecipesListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipesListViewHolder {
-        val binding: RecipeCellBindingImpl = DataBindingUtil.inflate(
-            LayoutInflater.from(parent.context),
-            R.layout.recipe_cell, parent, false
+        val binding = RecipeCellBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
         )
         return RecipesListViewHolder(binding)
     }
@@ -29,7 +26,7 @@ class RecipesListAdapter(
         holder.bind(data[position], myClickListener)
     }
 
-    class RecipesListViewHolder(val binding: RecipeCellBindingImpl) :
+    class RecipesListViewHolder(val binding: RecipeCellBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(recipe: Recipe, myClickListener: HomeAdapter.MyClickListener) {

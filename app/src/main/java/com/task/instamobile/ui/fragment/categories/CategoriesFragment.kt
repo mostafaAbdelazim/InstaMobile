@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -16,28 +15,34 @@ import com.task.instamobile.model.Category
 import com.task.instamobile.ui.activity.MainActivity
 
 class CategoriesFragment : Fragment() {
+    private lateinit var viewModel: CategoriesViewModel
+    private lateinit var binding: FragmentCategoriesBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val viewModel = ViewModelProviders.of(this).get(CategoriesViewModel::class.java)
-        val binding: FragmentCategoriesBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_categories, container, false)
-        binding.lifecycleOwner = this
+        viewModel = ViewModelProviders.of(this).get(CategoriesViewModel::class.java)
+        binding = FragmentCategoriesBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = this@CategoriesFragment
+        }
+        setObservers()
+        return binding.root
+    }
+
+    private fun setObservers() {
         viewModel.categoriesLiveData.observe(this, Observer {
             if (it != null) {
                 val adapter = CategoriesAdapter(it, object : CategoriesAdapter.MyClickListener {
                     override fun myOnClick(category: Category) {
-                        if (category.recipesCount > 0){
+                        if (category.recipesCount > 0) {
                             view?.findNavController()?.navigate(
                                 CategoriesFragmentDirections.actionActionCategoriesToRecipesList(
                                     category
                                 )
                             )
-                        }else{
-                            (activity as MainActivity).showSnackBar("Empty category, Please add more recipes to this category.")
+                        } else {
+                            (activity as MainActivity).showSnackBar(getString(R.string.empty_category_warning_message))
                         }
-
                     }
                 })
                 binding.recyclerView.adapter = adapter
@@ -49,6 +54,5 @@ class CategoriesFragment : Fragment() {
                 viewModel.doneShowingErrorMessage()
             }
         })
-        return binding.root
     }
 }

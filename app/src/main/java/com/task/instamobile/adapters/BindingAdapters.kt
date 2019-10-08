@@ -1,4 +1,4 @@
-package com.task.instamobile.util
+package com.task.instamobile.adapters
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -6,7 +6,6 @@ import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.task.instamobile.R
-import com.task.instamobile.adapters.SliderAdapter
 
 @BindingAdapter("app:imageUrl")
 fun setImage(imageView: ImageView, url: String?) {

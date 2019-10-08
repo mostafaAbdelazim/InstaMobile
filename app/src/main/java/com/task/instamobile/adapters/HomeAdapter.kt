@@ -24,7 +24,7 @@ class HomeAdapter(private val data: List<Recipe>, private val myClickListener: M
     class HomeViewHolder(private val binding: HomeCellBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: Recipe, myClickListener: MyClickListener) {
-            binding.root.setOnClickListener { v -> myClickListener.myOnClick(recipe) }
+            binding.root.setOnClickListener { myClickListener.myOnClick(recipe) }
             binding.recipe = recipe
             binding.executePendingBindings()
         }

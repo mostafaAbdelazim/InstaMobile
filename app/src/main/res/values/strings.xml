@@ -6,4 +6,5 @@
     <string name="categories">Categories</string>
     <string name="home">Home</string>
     <string name="view_ingredients">View Ingredients</string>
+    <string name="empty_category_warning_message">Empty category, Please add more recipes to this category.</string>
 </resources>
