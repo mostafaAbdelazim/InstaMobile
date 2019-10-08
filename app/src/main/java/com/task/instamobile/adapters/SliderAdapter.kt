@@ -1,20 +1,30 @@
 package com.task.instamobile.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.viewpager.widget.PagerAdapter
-import com.task.instamobile.R
 import com.task.instamobile.databinding.ImageSlideBinding
 
 
-class SliderAdapter(private val photos: List<String>, private val layoutInflater: LayoutInflater) :
+class SliderAdapter(private val photos: List<String>, private val context: Context) :
     PagerAdapter() {
+    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+        container.removeView(`object` as View)
+    }
+
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val binding: ImageSlideBinding =
-            DataBindingUtil.inflate(layoutInflater, R.layout.image_slide, container, false)
-        binding.url = photos[position]
+
+
+        val binding =
+            ImageSlideBinding.inflate(
+                LayoutInflater.from(context),
+                container,
+                false
+            )
+        binding.imageUrl = photos[position]
+        container.addView(binding.root)
         return binding.root
     }
 

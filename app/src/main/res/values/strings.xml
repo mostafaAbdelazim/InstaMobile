@@ -5,4 +5,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="categories">Categories</string>
     <string name="home">Home</string>
+    <string name="view_ingredients">View Ingredients</string>
 </resources>

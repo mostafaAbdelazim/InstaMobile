@@ -19,13 +19,12 @@ class HomeViewModel : ViewModel() {
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String>
         get() = _errorMessage
-
     init {
         recipesRef.get().addOnSuccessListener {
             val list = mutableListOf<Recipe>()
             var recipe: Recipe
             for (recipeDocument in it.documents) {
-                db.document(recipeDocument.toObject(Recipe::class.java)?.categoryId?.path ?: "")
+                db.document(recipeDocument.toObject(Recipe::class.java)?.categoryId!!)
                     .get()
                     .addOnSuccessListener { documentSnapshot ->
                         val category: Category = documentSnapshot.toObject(Category::class.java)!!

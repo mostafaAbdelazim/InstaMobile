@@ -13,9 +13,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#A7A7A7"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:background="@color/fragment_background"
+        android:paddingStart="@dimen/sixteen"
+        android:paddingEnd="@dimen/sixteen"
         tools:context=".ui.fragment.recipesList.RecipesList">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -23,8 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
+            android:paddingTop="@dimen/sixteen"
+            android:paddingBottom="@dimen/sixteen"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

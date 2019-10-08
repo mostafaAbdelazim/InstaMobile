@@ -26,9 +26,10 @@ class CategoriesViewModel : ViewModel() {
             val list = mutableListOf<Category>()
             var category: Category
             for (categoryDocument in it.documents) {
-                recipes.whereEqualTo("categoryId", categoryDocument.reference).get()
+                recipes.whereEqualTo("categoryId", categoryDocument.reference.path).get()
                     .addOnSuccessListener { querySnapshot ->
                         category = categoryDocument.toObject(Category::class.java)!!
+                        category.categoryRef = categoryDocument.reference.path
                         category.recipesCount = querySnapshot.documents.size
                         list.add(category)
                         list.sortByDescending { category1 ->

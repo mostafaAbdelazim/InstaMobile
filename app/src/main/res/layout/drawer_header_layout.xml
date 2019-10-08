@@ -4,14 +4,14 @@
     android:id="@+id/navHeader"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#DAD5D5"
+    android:background="@color/fragment_background"
     android:minHeight="192dp"
-    android:padding="16dp">
+    android:padding="@dimen/sixteen">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="18dp"
+        android:layout_margin="@dimen/sixteen"
         android:src="@drawable/ic_cake"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
