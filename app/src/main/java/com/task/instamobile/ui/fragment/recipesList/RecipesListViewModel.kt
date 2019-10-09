@@ -28,7 +28,7 @@ class RecipesListViewModel(category: Category) : ViewModel() {
                     val recipe = recipeDocument.toObject(Recipe::class.java)
                     recipe?.let { recipe1 ->
                         recipe1.categoryName = category.name
-                        list.add(recipe)
+                        list.add(recipe1)
                     }
                 }
                 _recipesList.value = list
