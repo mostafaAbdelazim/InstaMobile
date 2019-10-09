@@ -6,10 +6,6 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.task.instamobile.ui.fragment.recipeDetails.RecipeDetailsViewModel" />
-
-        <variable
             name="recipe"
             type="com.task.instamobile.model.Recipe" />
     </data>

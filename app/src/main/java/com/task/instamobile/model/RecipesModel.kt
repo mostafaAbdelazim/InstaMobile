@@ -16,6 +16,3 @@ data class Recipe(
     val recipeId: Int = -1,
     @Expose var categoryName: String = ""
 ) : Parcelable
-
-@Parcelize
-data class Ingredient(val id: String = "", val amount: String = "") : Parcelable

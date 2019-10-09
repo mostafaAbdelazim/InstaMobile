@@ -26,7 +26,6 @@ class RecipesList : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRecipesListBinding.inflate(inflater, container, false).apply {
-            viewModel = recipesListViewModel
             lifecycleOwner = this@RecipesList
         }
         setObservers()
